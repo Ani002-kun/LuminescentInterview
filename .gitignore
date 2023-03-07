@@ -1,5 +1,5 @@
 #ignore angular test code
-.qatest
+.qa_test
 
 #ignore node modules
 .node_modules
