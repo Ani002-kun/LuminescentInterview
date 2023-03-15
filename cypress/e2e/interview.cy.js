@@ -33,9 +33,10 @@ context('Gallary view',()=>{
         let a = text.split('D');
         let outsideText=a[0];
         cy.get('[class="image-thumb"]').eq(index).click().wait(2000)
-        cy.get('img').invoke('css', 'height').wait(2000).then(str => parseInt(str)).should('eq', 500);            // this will measure the height of the image in detailed view.
-        cy.wait(3000) 
-        cy.get('.info-container > :nth-child(1)').invoke('text').should('have.text',outsideText)                 //it will match the text present outside with the text and number present on the inside
+        cy.get('img').invoke('css', 'height').wait(2000).then(str => parseInt(str)).should('eq', 500);           // this will measure the height of the image in detailed view.
+        cy.wait(3000)
+        cy.url().should('include','detail');                                                                     // verifying if the page is the details page
+        cy.get('.info-container > :nth-child(1)').invoke('text').should('have.text',outsideText)                 // it will match the text present outside with the text and number present on the inside
         cy.get('a').should('exist').and('have.text','Back').click()
         cy.url().should('eq','http://localhost:4200/')
         cy.wait(3000)
